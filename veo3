@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gerador Konect AI Prompts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #e60000;
+      margin-bottom: 10px;
+    }
+    img.logo {
+      display: block;
+      margin: 0 auto 20px auto;
+      max-width: 300px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    select, input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+    select, input, textarea {
+      background: #111;
+      color: #fff;
+    }
+    button {
+      background-color: #e60000;
+      color: #fff;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #ff1a1a;
+    }
+    #resultado {
+      margin-top: 30px;
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      border: 1px solid #333;
+      min-height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <img class="logo" src="sk (1).png" alt="Streaming Konect Logo" />
+  <h1>Gerador Konect AI Prompts</h1>
+
+  <label for="tema">Tema do Prompt:</label>
+  <input type="text" id="tema" placeholder="Digite o tema do prompt..." />
+
+  <label for="estilo">Estilo:</label>
+  <select id="estilo">
+    <option value="ultra realista">Ultra Realista</option>
+    <option value="futurista">Futurista</option>
+    <option value="minimalista">Minimalista</option>
+    <option value="colorido">Colorido</option>
+    <option value="cinematográfico">Cinematográfico</option>
+  </select>
+
+  <label for="detalhes">Detalhes adicionais:</label>
+  <textarea id="detalhes" rows="4" placeholder="Descreva detalhes extras para o prompt..."></textarea>
+
+  <button onclick="gerarPrompt()">Gerar Prompt</button>
+
+  <div id="resultado"></div>
+
+  <script>
+    function gerarPrompt() {
+      const tema = document.getElementById('tema').value.trim();
+      const estilo = document.getElementById('estilo').value;
+      const detalhes = document.getElementById('detalhes').value.trim();
+
+      if (!tema) {
+        alert('Por favor, digite o tema do prompt.');
+        return;
+      }
+
+      let prompt = `Crie uma imagem de ${tema} no estilo ${estilo}`;
+      if (detalhes) {
+        prompt += `, com os seguintes detalhes: ${detalhes}`;
+      }
+      prompt += '.';
+
+      document.getElementById('resultado').textContent = prompt;
+    }
+  </script>
+
+</body>
+</html>
