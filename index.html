@@ -81,7 +81,13 @@
 
   <button onclick="gerarPrompt()">Gerar Prompt</button>
 
-  <div id="resultado"></div>
+  <div style="position: relative;">
+  <button onclick="copiarTexto()" style="position: absolute; top: 10px; right: 10px; padding: 6px 12px; background-color: #444; color: #fff; border: none; border-radius: 5px; cursor: pointer;">
+    Copiar
+  </button>
+  <div id="resultado" style="margin-top: 30px; background: #111; padding: 20px; border-radius: 10px; white-space: pre-wrap; border: 1px solid #333;"></div>
+</div>
+
 
   <script>
     function gerarPrompt() {
@@ -103,6 +109,18 @@
       document.getElementById('resultado').textContent = prompt;
     }
   </script>
+<script>
+  function copiarTexto() {
+    const resultado = document.getElementById("resultado");
+    const texto = resultado.innerText;
+
+    navigator.clipboard.writeText(texto).then(function () {
+      alert("Texto copiado com sucesso!");
+    }, function () {
+      alert("Erro ao copiar o texto.");
+    });
+  }
+</script>
 
 </body>
 </html>
